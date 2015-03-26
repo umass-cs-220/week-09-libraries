@@ -44,7 +44,7 @@ private [graphics] abstract class Component extends Rectangular {
 // The rectangle class can then be defined as:
 private [graphics] class Rectangle (
   protected val topLeft: Point,
-  protected val bottomRight: Point) extends Rectangular {
+  protected val bottomRight: Point) extends Component {
   // other methods for rectangles...
 }
 

@@ -15,14 +15,21 @@ This week we will be looking at techniques for building libraries in Scala. In p
 * Chapter 19 Type Parameterization, Odersky
 * Chapter 20 Abstract Members, Odersky
 
+## Code Examples
+
+* [code/traits]
+* [code/types]
+
 ## Resources
 
 * [SBT Library Dependencies], how to use libraries in SBT
 * [Maven Central], a place to search for libraries
 * [awesome-scala], a list of useful Scala libraries
 * [scala-csv], a CSV library for Scala
+* [sbt-assembly], an SBT plugin to build JAR files
 
 [SBT Library Dependencies]: http://www.scala-sbt.org/0.13/tutorial/Library-Dependencies.html
 [Maven Central]: http://search.maven.org
 [awesome-scala]: https://github.com/lauris/awesome-scala
 [scala-csv]: https://github.com/tototoshi/scala-csv
+[sbt-assembly]: https://github.com/sbt/sbt-assembly
