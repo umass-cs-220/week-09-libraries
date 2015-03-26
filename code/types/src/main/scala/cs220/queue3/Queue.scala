@@ -1,6 +1,6 @@
-package cs220.variance
+package cs220.queue3
 
-trait Queue[+T] {
+trait Queue[T] {
   def head: T
   def tail: Queue[T]
   def enqueue[U >: T](x: U): Queue[U]

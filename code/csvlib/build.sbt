@@ -1,4 +1,4 @@
-name := "types"
+name := "csvlib"
 
 organization := "timdrichards"
 
@@ -8,4 +8,6 @@ scalaVersion := "2.11.6"
 
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.2.1" % "test",
+  // We add the scala-csv library to our dependencies:
+  "com.github.tototoshi" %% "scala-csv" % "1.2.1"
 )

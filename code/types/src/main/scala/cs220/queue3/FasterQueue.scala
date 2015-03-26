@@ -1,4 +1,4 @@
-package cs220.variance
+package cs220.queue3
 
 /** A "faster" functional queue.
   *
@@ -9,12 +9,14 @@ package cs220.variance
   * elements that we will dequeue from and trailing elements which
   * represent the end of the queue.
   */
-class FasterQueue[T] private [variance] (
+class FasterQueue[T] private [queue3] (
   // We use the val syntax and private in the constructor to create
   // member variables representing the leading and trailing elements
   // as well as private for information hiding:
-  private val leading: List[T],
-  private val trailing: List[T]
+
+  // CHANGE: change leading/trailing to vars:
+  private var leading: List[T],
+  private var trailing: List[T]
 ) extends Queue[T] {
   // mirror returns a queue with leading elements.
   //
@@ -24,11 +26,16 @@ class FasterQueue[T] private [variance] (
   // elements then we do nothing.
   //
   // We use private to hide this method from outside this class.
-  private def mirror =
-    if (leading.isEmpty)
-      new FasterQueue(trailing.reverse, Nil)
-    else
-      this
+
+  // CHANGE: introduce vars so we only need to update leading and
+  // trailing once:
+  private def mirror() =
+    if (leading.isEmpty) {
+      while (!trailing.isEmpty) {
+        leading = trailing.head :: leading
+        trailing = trailing.tail
+      }
+    }
 
   // The head of the queue is the head of the mirror of this queue.
   //
@@ -40,14 +47,21 @@ class FasterQueue[T] private [variance] (
   // D) When tail is called repeatedly without a call to head.
   // E) This method is always efficent.
   //
-  def head = mirror.leading.head
+
+  // CHANGE: call mirror() for side-effect and return head.
+  def head = {
+    mirror()
+    leading.head
+  }
 
   // The tail of the queue is a new queue where the leading elements
   // are the tail of the mirror of this queue and its trailing elements
   // are the trailing elements of the mirror.
+
+  // CHANGE: call mirror() for side-effect and return new queue.
   def tail = {
-    val q = mirror
-    new FasterQueue(q.leading.tail, q.trailing)
+    mirror()
+    new FasterQueue(leading.tail, trailing)
   }
 
   // enqueue create a new queue with the leading elements being the
