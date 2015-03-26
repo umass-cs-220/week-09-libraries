@@ -40,6 +40,8 @@ queue implementation in that it is expensive to enqueue
 elements. Ideally, we want to provide a functional queue that is as or
 near efficient as its mutable counterpart. What can we do to fix this?
 
+[src/main/scala/cs220/queue/SlowAppendQueue.scala]: src/main/scala/cs220/queue/SlowAppendQueue.scala
+
 [src/main/scala/cs220/queue/SlowHeadQueue.scala] is another example of
 a queue. We make changes to the internal representation of the queue
 so that the enqueue operation is constant time. Unfortunately, this
@@ -47,11 +49,15 @@ impacts the other operations making both `head` and `tail` time
 proportional to the number of elements in the queue. What can we do to
 fix this problem?
 
+[src/main/scala/cs220/queue/SlowHeadQueue.scala]:  src/main/scala/cs220/queue/SlowHeadQueue.scala
+
 [src/main/scala/cs220/queue/FasterQueue.scala] is yet another example
 that leverages the possibility that `head`, `tail`, and `enqueue` are
 called with about the same frequency. In this example we can make a
 good argument about its asymptotic behavior being constant time rather
 than time proportional to the number of elements in the queue.
+
+[src/main/scala/cs220/queue/FasterQueue.scala]: src/main/scala/cs220/queue/FasterQueue.scala
 
 * What is this assumption?
 * What happens when we break this assumption?
@@ -89,11 +95,15 @@ easily accomplished as you can see in the new version of
 client of the library is no longer capable of constructing a
 `FasterQueue` object with `new`.
 
+[src/main/scala/cs220/queue2/FasterQueue.scala]: src/main/scala/cs220/queue2/FasterQueue.scala
+
 Next, we need to provide a library interface that allows us to create
 a new `Queue` as shown in the above example. A sensible approach is to
 use a *companion object* named `Queue` that implements the `apply`
 method. You can see this extension in
 [src/main/scala/cs220/queue2/Queue.scala].
+
+[src/main/scala/cs220/queue2/Queue.scala]: src/main/scala/cs220/queue2/Queue.scala
 
 With these two additions in place we have built a library with a
 simple interface that behaves similiarly to the Scala standard
