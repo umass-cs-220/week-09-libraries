@@ -17,8 +17,9 @@ This week we will be looking at techniques for building libraries in Scala. In p
 
 ## Code Examples
 
-* [code/traits]
-* [code/types]
+* [code/traits](code/traits)
+* [code/types](code/types)
+* [code/csvlib](code/csvlib)
 
 ## Resources
 
